@@ -1,0 +1,35 @@
+name: comunicador de la legión
+
+on:
+  workflow_dispatch:
+    inputs:
+      villano:
+        description: "Qué villano envía el mensaje?"
+        required: true
+        type: choice
+        options:
+          - Lex Luthor
+          - Doomsday
+          - Brainiac
+      mensaje:
+        description: "Mensaje para el consejo"
+        required: true
+        type: string
+        default: "La misión fue un éxito!"
+      prioridad:
+        description: "Qué prioridad tiene el mensaje?"
+        required: true
+        type: choice
+        options:
+          - Normal
+          - Alta
+          - Crítica
+jobs:
+  transmitir-mensaje:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Imprimir inputs
+        run: |
+          echo "Inputs: "
+          echo ""
+          echo "Villano: ${{inputs.villano}}"
